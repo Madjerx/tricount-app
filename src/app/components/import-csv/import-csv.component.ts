@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import * as moment from 'moment';
+import { Depense } from 'src/app/models/depense';
 
 @Component({
   selector: 'app-import-csv',
@@ -7,6 +9,7 @@ import { Component } from '@angular/core';
 })
 export class ImportCsvComponent {
 
+  // method to get data from CSV into a Depense array 
 
   onFileSelected(event: any): void {
 
@@ -22,6 +25,14 @@ export class ImportCsvComponent {
 
       // Parse the CSV data 
       const rows = csvData.split('\r\n');
+
+      // Remove the last row if it is empty
+      if (rows[rows.length - 1] === '') {
+        rows.pop();
+      }
+
+      // transform data in a array of objects with csv headers as properties and row as values
+       
       const headers = rows[0].split(';');
       const values = rows.slice(1).map(
         row => row.split(';'));
@@ -36,7 +47,24 @@ export class ImportCsvComponent {
       })
 
       console.log('objects = ', objects);
+      console.log('obj0 = ', objects[0])
 
+      // Convert objects from csv into an array of my Depense Class
+
+      const depenses: Depense[] = objects.map(depense => {
+        const depenseObj: Depense = new Depense();
+        const date0bj: Date = moment(depense['date'], 'DD/MM/YYYY').toDate();
+        depenseObj.setName(depense['name']);
+        depenseObj.setDate(date0bj);
+        depenseObj.setCategory(depense['category']);
+        depenseObj.setRate(depense['rate']);
+        depenseObj.setSpent(depense['spent']);
+        return depenseObj;
+      })
+
+      console.log('depenses = ',depenses);
+      
+     
     }
 
     reader.readAsText(file);
