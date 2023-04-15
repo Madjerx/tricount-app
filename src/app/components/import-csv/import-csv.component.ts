@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import * as moment from 'moment';
 import { Depense } from 'src/app/models/depense';
+import { CsvImportService } from 'src/app/services/csv-import.service';
 
 @Component({
   selector: 'app-import-csv',
@@ -9,17 +10,24 @@ import { Depense } from 'src/app/models/depense';
 })
 export class ImportCsvComponent {
 
+  public constructor(private csvService: CsvImportService) { }
+
   // method to get data from CSV into a Depense array 
 
+  @Output() selectedDepenses: EventEmitter<Depense[]> = new EventEmitter<Depense[]>();
+
+ 
   onFileSelected(event: any): void {
 
-
+    
 
     const file: File = event.target.files[0];
     const reader: FileReader = new FileReader();
 
 
+
     reader.onload = () => {
+
 
       const csvData = reader.result as string;
 
@@ -32,7 +40,7 @@ export class ImportCsvComponent {
       }
 
       // transform data in a array of objects with csv headers as properties and row as values
-       
+
       const headers = rows[0].split(';');
       const values = rows.slice(1).map(
         row => row.split(';'));
@@ -61,14 +69,13 @@ export class ImportCsvComponent {
         depenseObj.setSpent(depense['spent']);
         return depenseObj;
       })
+      console.log('depenses = ', depenses);
+      this.selectedDepenses.emit(depenses);
 
-      console.log('depenses = ',depenses);
-      
-     
     }
 
     reader.readAsText(file);
-
   }
+
 
 }

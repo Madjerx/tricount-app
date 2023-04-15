@@ -1,0 +1,23 @@
+<table>
+    <thead>
+        <tr>
+            <td>Auteur</td>
+            <td>Date</td>
+            <td>Catégorie</td>
+            <td>Rate</td>
+            <td>Dépense</td>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let depense of depenses">
+            <tr>
+                <td>{{depense.getName()}}</td>
+                <td>{{depense.getDate()}}</td>
+                <td>{{depense.getCategory()}}</td>
+                <td>{{depense.getRate()}}</td>
+                <td>{{depense.getSpent()}}</td>
+            </tr>
+        </ng-container>
+    </tbody>
+</table>
+<app-import-csv (selectedDepenses)="addDepenses($event)"></app-import-csv>
