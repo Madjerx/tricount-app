@@ -27,7 +27,11 @@ export class ImportCsvComponent {
         row => row.split(';'));
       const objects = values.map(value => {
         const obj: { [key: string]: any } = {};
-        headers.forEach((header, index) => obj[header] = value[index]);
+        headers.forEach((header, index) => {
+          const numericValue = Number(value[index]);
+          obj[header] = isNaN(numericValue) ? value[index] : numericValue;
+
+        })
         return obj;
       })
 
