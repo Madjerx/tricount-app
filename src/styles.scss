@@ -1,1 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+$main_color : rgb(63, 181, 134);
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+.step p{
+    width: 20px;
+    text-align: center;
+    border-radius: 50%;
+    padding: 10px;
+    margin: auto;
+    color: white;
+    background-color: $main_color;
+}
+
+.main {
+    margin: auto;
+    padding: 10px;
+    border: solid 1px grey;
+    border-radius: 5px;
+}
+
+
+
+button {
+
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-weight: 500;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    height: 36px;
+    line-height: 34px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: $main_color;
+    transition: background-color 0.2s ease-in-out 0s, opacity 0.2s ease-in-out 0s;
+    padding: 0 18px;
+
+
+}
+
+button:hover {
+
+    color: #ffffff;
+    background-color: darken($color: $main_color, $amount: 8%);
+
+}
+
+.center-content {
+    color: $main_color;
+    margin: auto;
+    text-align: center;
+}

@@ -15,6 +15,7 @@ export class DepensesTableComponent implements OnInit {
   public creditor: string = '';
   public amountToGive: number = 0;
   public fileLoaded: boolean = true;
+  public showDetailsStatus: boolean = false;
 
   ngOnInit(): void {
     this.depenses = this.csvService.getDepenses().map(depense => {
@@ -64,6 +65,10 @@ export class DepensesTableComponent implements OnInit {
   }
 
   public constructor(private csvService: CsvImportService) { };
+
+  public showDetails():void {
+    this.showDetailsStatus = true;
+  }
 
 
 }

@@ -10,47 +10,65 @@ table {
   overflow: hidden;
   border: 1px solid $std-color;
   background-color: $light-color;
-  thead, tbody, tfoot {
+
+  thead,
+  tbody,
+  tfoot {
     tr {
-      td, th  {
+
+      td,
+      th {
         padding: .5rem;
+
         &.center-cell {
           text-align: center;
         }
+
         &.right-cell {
           text-align: right;
         }
+
         &.left-cell {
           text-align: left;
         }
       }
     }
   }
-  thead, tfoot {
-    tr th, tr td {
+
+  thead,
+  tfoot {
+
+    tr th,
+    tr td {
       background-color: $std-color;
       color: $light-color;
     }
   }
+
   tbody {
     tr {
       &:nth-child(odd) {
         background-color: lighten($std-color, 45);
       }
+
       td {
         .name-puce {
           margin-right: .5rem;
+
           &:hover {
             cursor: pointer;
           }
         }
+
         button {
           transition: all .3s cubic-bezier(0.17, 0.84, 0.44, 1);
+
           &:hover {
             background-color: lighten($std-color, $amount: 20);
             color: $light-color;
             cursor: pointer;
           }
+
           &:not(:last-child) {
             margin-right: 1rem;
           }
@@ -79,11 +97,24 @@ table {
   color: #000;
 }
 
-p {
+table p {
   color: #383c52;
 }
 
 mat-select {
   background-color: $light-color;
   border: 3px solid $std-color;
+}
+
+.result {
+  p {
+    color: rgb(63, 181, 134);
+    font-weight: 600;
+    font-size: 18px;
+    text-align: center;
+  }
+}
+
+.expenses-list p {
+  text-align: center;
 }

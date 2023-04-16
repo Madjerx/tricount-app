@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import * as moment from 'moment';
 import { Depense } from 'src/app/models/depense';
 import { CsvImportService } from 'src/app/services/csv-import.service';
@@ -9,8 +10,10 @@ import { CsvImportService } from 'src/app/services/csv-import.service';
   styleUrls: ['./import-csv.component.scss']
 })
 export class ImportCsvComponent {
+  public fileLoaded: boolean = false;
 
-  public constructor(private csvService: CsvImportService) { }
+  public constructor(private csvService: CsvImportService,
+    private router: Router) { }
 
   // method to get data from CSV into a Depense array 
 
@@ -73,7 +76,10 @@ export class ImportCsvComponent {
     }
 
     reader.readAsText(file);
+    this.fileLoaded = true;
   }
 
-
+  public goNextStep(): void {
+    this.router.navigate(['/home']);
+  }
 }

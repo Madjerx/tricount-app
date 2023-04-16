@@ -1,1 +1,22 @@
-<input type="file" (change)="onFileSelected($event)">
+<div class="step">
+    <p>1</p>
+</div>
+<div class="consigne">
+    <p>Chargez un fichier au format CSV (format UTF-8 avec séparation en ';')</p>
+</div>
+<!-- <div class="main">
+    <input type="file" (change)="onFileSelected($event)">
+</div> -->
+<div *ngIf="!fileLoaded" class="button-wrapper">
+    <span class="label">
+        Upload File
+    </span>
+
+    <input type="file" name="upload" id="upload" class="upload-box" placeholder="Upload File"
+        (change)="onFileSelected($event)">
+
+</div>
+<div *ngIf="fileLoaded" class="center-content">
+    <p>Fichier chargé</p>
+    <button type="button" class="button" (click)="goNextStep()">Résultats</button>
+</div>
