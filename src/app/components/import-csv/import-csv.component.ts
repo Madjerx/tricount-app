@@ -83,7 +83,7 @@ export class ImportCsvComponent {
       this.fileLoaded = true;
       this.onLoad = false;
     },
-      1000);
+      500);
   }
 
   public goNextStep(): void {
