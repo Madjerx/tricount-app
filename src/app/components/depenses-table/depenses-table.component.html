@@ -11,9 +11,9 @@
     <tbody>
         <ng-container *ngFor="let depense of depenses">
             <tr>
-                <td>{{depense.getName()}}</td>
-                <td>{{depense.getDate()}}</td>
-                <td>{{depense.getCategory()}}</td>
+                <td>{{depense.getName() | titlecase}}</td>
+                <td>{{depense.getDate() | date: 'dd/MM'}}</td>
+                <td>{{depense.getCategory() | titlecase}}</td>
                 <td>{{depense.getRate()}}</td>
                 <td>{{depense.getSpent()}}</td>
             </tr>
