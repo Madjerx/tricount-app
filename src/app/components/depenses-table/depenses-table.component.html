@@ -20,7 +20,6 @@
         </ng-container>
     </tbody>
 </table>
-<app-import-csv (selectedDepenses)="addDepenses($event)"></app-import-csv>
 <ul>
     <li *ngFor="let author of mappedDepenses | keyvalue">{{author.key | titlecase}} a dépensé {{author.value}}€.</li>
 </ul>

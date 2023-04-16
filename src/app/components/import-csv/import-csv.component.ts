@@ -14,7 +14,6 @@ export class ImportCsvComponent {
 
   // method to get data from CSV into a Depense array 
 
-  @Output() selectedDepenses: EventEmitter<Depense[]> = new EventEmitter<Depense[]>();
 
  
   onFileSelected(event: any): void {
@@ -69,8 +68,7 @@ export class ImportCsvComponent {
         depenseObj.setSpent(depense['spent']);
         return depenseObj;
       })
-      console.log('depenses = ', depenses);
-      this.selectedDepenses.emit(depenses);
+      this.csvService.setDepenses(depenses);
 
     }
 
