@@ -7,7 +7,7 @@
 <!-- <div class="main">
     <input type="file" (change)="onFileSelected($event)">
 </div> -->
-<div *ngIf="!fileLoaded" class="button-wrapper">
+<div *ngIf="!fileLoaded && !onLoad" class="button-wrapper">
     <span class="label">
         Upload CSV
     </span>
@@ -16,9 +16,19 @@
         (change)="onFileSelected($event)">
 
 </div>
-<div *ngIf="fileLoaded" class="center-content">
+<div *ngIf="onLoad" class="center-content">
+    <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<div *ngIf="fileLoaded && !onLoad" class="center-content">
     <p class="green">Fichier chargé</p>
     <button type="button" class="button" (click)="goNextStep()">Résultats</button>
 </div>
-
-<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>

@@ -11,6 +11,7 @@ import { CsvImportService } from 'src/app/services/csv-import.service';
 })
 export class ImportCsvComponent {
   public fileLoaded: boolean = false;
+  public onLoad: boolean = false;
 
   public constructor(private csvService: CsvImportService,
     private router: Router) { }
@@ -18,10 +19,10 @@ export class ImportCsvComponent {
   // method to get data from CSV into a Depense array 
 
 
- 
+
   onFileSelected(event: any): void {
 
-    
+
 
     const file: File = event.target.files[0];
     const reader: FileReader = new FileReader();
@@ -76,7 +77,13 @@ export class ImportCsvComponent {
     }
 
     reader.readAsText(file);
-    this.fileLoaded = true;
+
+    this.onLoad = true;
+    setTimeout(() => {
+      this.fileLoaded = true;
+      this.onLoad = false;
+    },
+      1000);
   }
 
   public goNextStep(): void {
