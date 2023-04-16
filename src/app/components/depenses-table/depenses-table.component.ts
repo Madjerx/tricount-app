@@ -67,7 +67,7 @@ export class DepensesTableComponent implements OnInit {
   public constructor(private csvService: CsvImportService) { };
 
   public showDetails():void {
-    this.showDetailsStatus = true;
+    this.showDetailsStatus = !this.showDetailsStatus;
   }
 
 
