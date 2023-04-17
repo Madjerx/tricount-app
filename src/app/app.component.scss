@@ -15,7 +15,7 @@ h1 {
 
 
 
-.thirteen h1 {
+.title h1 {
     position: relative;
     font-size: 20px;
     font-weight: 700;
@@ -30,8 +30,8 @@ h1 {
     padding: 5px 11px 3px 11px;
 }
 
-.thirteen h1:before,
-.thirteen h1:after {
+.title h1:before,
+.title h1:after {
     background-color: $main_color;
     position: absolute;
     content: '';
@@ -42,10 +42,10 @@ h1 {
     bottom: 12px;
 }
 
-.thirteen h1:before {
+.title h1:before {
     left: -20px;
 }
 
-.thirteen h1:after {
+.title h1:after {
     right: -20px;
 }
