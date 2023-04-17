@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Route, Router } from '@angular/router';
+import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 import * as moment from 'moment';
 import { Depense } from 'src/app/models/depense';
 import { CsvImportService } from 'src/app/services/csv-import.service';
@@ -13,6 +14,9 @@ export class ImportCsvComponent implements OnInit {
   
   public fileLoaded: boolean = false;
   public onLoad: boolean = false;
+  public faCheck = faCheck;
+  public faXmark = faXmark;
+
 
   public constructor(private csvService: CsvImportService,
     private router: Router) { }
@@ -86,4 +90,15 @@ export class ImportCsvComponent implements OnInit {
       500);
   }
 
+  public reload():void {
+    this.csvService.clearLocalStorage();
+    this.onLoad = true;
+    setTimeout(() => {
+      this.fileLoaded = false;
+      this.onLoad = false;
+    },
+      500);
+    // window.location.reload();
+
+  }
 }

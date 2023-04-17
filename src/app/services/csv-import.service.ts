@@ -21,5 +21,9 @@ export class CsvImportService {
     return JSON.parse(localStorage.getItem('depenses') || '[]');
   }
 
-  // Cea  
+  // Clear localStorage
+
+  public clearLocalStorage():void {
+    localStorage.clear();
+  }
 }

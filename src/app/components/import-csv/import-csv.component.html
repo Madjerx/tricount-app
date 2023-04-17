@@ -28,6 +28,6 @@
 </div>
 <!-- confirm loaded file section + result -->
 <div *ngIf="fileLoaded && !onLoad" class="center-content">
-    <p class="green">Fichier chargé</p>
+    <p class="green">Fichier chargé <fa-icon [icon]="faCheck"></fa-icon><fa-icon (click)="reload()" style="margin-left:5px;color:red" [icon]="faXmark"></fa-icon></p>
     <app-depenses-table></app-depenses-table>
 </div>
