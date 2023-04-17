@@ -18,7 +18,10 @@ export class DepensesTableComponent implements OnInit {
   public showDetailsStatus: boolean = false;
 
   ngOnInit(): void {
-    this.depenses = this.csvService.getDepenses().map(depense => {
+
+    // Get depense from localStorage and convert into Depense[]
+
+    this.depenses = this.csvService.getDepensesFromLocalStorage().map(depense => {
       const depenseObj: Depense = new Depense();
       const date0bj: Date = new Date(depense['date']);
       depenseObj.setName(depense['name']);
@@ -28,11 +31,6 @@ export class DepensesTableComponent implements OnInit {
       depenseObj.setSpent(depense['spent']);
       return depenseObj;
     });
-
-    console.log('depenses type', this.depenses);
-    console.log('typeof depenses[0]', typeof this.depenses[0]);
-
-    console.log('depenses 0 getname', this.depenses[0].getDate());
 
     // Group expenses by author in a Map variable
 
@@ -66,7 +64,9 @@ export class DepensesTableComponent implements OnInit {
 
   public constructor(private csvService: CsvImportService) { };
 
-  public showDetails():void {
+  // basic change boolean state to display expenses details
+  
+  public showDetails(): void {
     this.showDetailsStatus = !this.showDetailsStatus;
   }
 

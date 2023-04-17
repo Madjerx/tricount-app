@@ -1,12 +1,9 @@
-<!-- <div class="step">
-    <p>1</p>
-</div> -->
-<div class="consigne">
+<!-- step section -->
+<div class="consigne center-content">
     <p>Chargez un fichier au format CSV (format UTF-8 avec séparation en ';')</p>
+    <p>Consultez la page d'<a href="/help">aide</a> pour plus d'informations</p>
 </div>
-<!-- <div class="main">
-    <input type="file" (change)="onFileSelected($event)">
-</div> -->
+<!-- upload section -->
 <div *ngIf="!fileLoaded && !onLoad" class="button-wrapper">
     <span class="label">
         Upload CSV
@@ -16,6 +13,7 @@
         (change)="onFileSelected($event)">
 
 </div>
+<!-- loader icon -->
 <div *ngIf="onLoad" class="center-content">
     <div class="lds-roller">
         <div></div>
@@ -28,8 +26,8 @@
         <div></div>
     </div>
 </div>
+<!-- confirm loaded file section + result -->
 <div *ngIf="fileLoaded && !onLoad" class="center-content">
     <p class="green">Fichier chargé</p>
     <app-depenses-table></app-depenses-table>
-    <!-- <button type="button" class="button" (click)="goNextStep()">Résultats</button> -->
 </div>

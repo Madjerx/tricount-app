@@ -17,8 +17,9 @@ export class AppRoutingModule {
       component: ImportCsvComponent
     },
     {
-      path: 'home',
-      component: DepensesTableComponent 
+      path: '**', // all wrong url redirection
+      redirectTo: '',
+      pathMatch: 'full',
     }
   ]
 }

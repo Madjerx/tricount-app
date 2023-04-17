@@ -1,8 +1,4 @@
-<!-- <div class="step">
-    <p>2</p>
-</div> -->
-
-
+<!-- Résultat après le tri -->
 <div *ngIf="fileLoaded" class="result">
     <p>{{indebted | titlecase}} doit {{amountToGive}} € à {{creditor | titlecase}}.</p>
 </div>
@@ -11,6 +7,8 @@
         <button class="detail-button" type="button" (click)="showDetails()">Afficher détails    </button>
     </div>
 </div>
+
+<!-- table with expenses + expenses per author -->
 
 <div *ngIf="showDetailsStatus" class="center-content">
     <p *ngFor="let author of mappedDepenses | keyvalue">{{author.key | titlecase}} a dépensé {{author.value}}€.</p>

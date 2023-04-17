@@ -9,15 +9,17 @@ export class CsvImportService {
 
   constructor() { }
 
-  private depenses: Depense[] = [];
+  // Set depense into localStorage
 
-  public setDepenses(depenses: any[]): void {
+  public setDepensesToLocalStorage(depenses: any[]): void {
     localStorage.setItem('depenses', JSON.stringify(depenses));
   }
 
-  public getDepenses(): any[] {
-    console.log('get called', JSON.parse(localStorage.getItem('depenses') || '[]'));
-    
+  // Get depense from localStorage
+
+  public getDepensesFromLocalStorage(): any[] {
     return JSON.parse(localStorage.getItem('depenses') || '[]');
   }
+
+  // Cea  
 }
