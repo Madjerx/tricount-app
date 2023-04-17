@@ -46,7 +46,6 @@ export class DepensesTableComponent implements OnInit {
     // Get author in debt
 
     const authorArray: string[] = [...this.mappedDepenses.keys()];
-    console.log(authorArray);
     if (this.mappedDepenses.get(authorArray[0])! > this.mappedDepenses.get(authorArray[1])!) {
       this.indebted = authorArray[1];
       this.creditor = authorArray[0];

@@ -1,7 +1,8 @@
 <!-- step section -->
 <div class="consigne center-content">
-    <p>Chargez un fichier au format CSV (format UTF-8 avec séparation en ';')</p>
-    <p>Consultez la page d'<a href="/help">aide</a> pour plus d'informations</p>
+    <p>Chargez le fichier CSV (format UTF-8 avec séparation en ';').</p>
+    <p>Consultez la page d'<a href="/help">aide</a> pour être guidé.</p>
+    <a *ngIf="!fileLoaded" href="/assets/example.csv" download="example.csv" target="_self" class="italic">Télécharger CSV d'exemple</a>
 </div>
 <!-- upload section -->
 <div *ngIf="!fileLoaded && !onLoad" class="button-wrapper">
@@ -28,6 +29,6 @@
 </div>
 <!-- confirm loaded file section + result -->
 <div *ngIf="fileLoaded && !onLoad" class="center-content">
-    <p class="green">Fichier chargé <fa-icon [icon]="faCheck"></fa-icon><fa-icon (click)="reload()" style="margin-left:5px;color:red" [icon]="faXmark"></fa-icon></p>
+    <p class="green">Fichier chargé <fa-icon (click)="reload()" style="color:red" [icon]="faXmark"></fa-icon></p>
     <app-depenses-table></app-depenses-table>
 </div>

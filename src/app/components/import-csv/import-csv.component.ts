@@ -23,7 +23,6 @@ export class ImportCsvComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log('get from local = ',this.csvService.getDepensesFromLocalStorage());
     // check if expenses array stored localy
 
     if(this.csvService.getDepensesFromLocalStorage().length > 0) {

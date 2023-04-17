@@ -12,11 +12,14 @@ body {
     background: #CCD1D9;
 }
 
+a.italic {
+  font-style: italic;
+}
 .button-wrapper {
     position: relative;
     width: 150px;
     text-align: center;
-    margin: auto;
+    margin: 50px auto;
 }
 
 .button-wrapper span.label {
