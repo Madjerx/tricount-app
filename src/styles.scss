@@ -6,7 +6,7 @@ body {
 }
 
 a {
-    color:$main_color;
+    color: $main_color;
 }
 
 .step p {
@@ -62,4 +62,11 @@ button:hover {
 
 .center-content .green {
     color: $main_color;
+}
+
+// html, body { height: 100%; }
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    padding: auto 10px;
 }

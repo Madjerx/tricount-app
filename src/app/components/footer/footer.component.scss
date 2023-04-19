@@ -1,0 +1,14 @@
+$main_color : rgb(63, 181, 134);
+
+footer {
+    background-color: $main_color;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    a {
+        color: white;
+        font-size: 25px;
+        padding: 5px;
+    }
+}
