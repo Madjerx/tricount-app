@@ -3,7 +3,7 @@ export class Depense {
     private date: Date = new Date();
     private category: string = '';
     private rate: number = 0.5;
-    private spent: number = 0;
+    private amount: number = 0;
 
     public getName(): string {
         return this.name;
@@ -18,7 +18,7 @@ export class Depense {
         return this.rate;
     }
     public getSpent(): number {
-        return this.spent;
+        return this.amount;
     }
     
     public setName(name: string): void {
@@ -33,8 +33,8 @@ export class Depense {
     public setRate(rate: number): void {
         this.rate = rate;
     }
-    public setSpent(spent: number): void {
-        this.spent = spent;
+    public setSpent(amount: number): void {
+        this.amount = amount;
     }
     
 

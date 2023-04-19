@@ -13,9 +13,9 @@ import { CsvImportService } from 'src/app/services/csv-import.service';
 export class ImportCsvComponent implements OnInit {
 
   public fileLoaded: boolean = false;
-  public onLoad: boolean = false;
   public ngSwitch: string = '';
   public faRotateBack = faRotateRight;
+  public helpStatus: boolean = false;
 
   public constructor(private csvService: CsvImportService,
     private router: Router) { }
@@ -75,7 +75,7 @@ export class ImportCsvComponent implements OnInit {
         depenseObj.setDate(date0bj);
         depenseObj.setCategory(depense['category']);
         depenseObj.setRate(depense['rate']);
-        depenseObj.setSpent(depense['spent']);
+        depenseObj.setSpent(depense['amount']);
         return depenseObj;
       })
       console.log('depenses ', depenses);
@@ -93,6 +93,8 @@ export class ImportCsvComponent implements OnInit {
       700);
   }
 
+  // refresh file and localstorage
+
   public reload(): void {
     this.csvService.clearLocalStorage();
     this.ngSwitch = 'loading';
@@ -103,5 +105,10 @@ export class ImportCsvComponent implements OnInit {
       700);
     // window.location.reload();
 
+  }
+
+  // display help section
+  public changeHelpStatus():void {
+    this.helpStatus = !this.helpStatus;
   }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { Depense } from 'src/app/models/depense';
 import { CsvImportService } from 'src/app/services/csv-import.service';
@@ -15,7 +16,8 @@ export class DepensesTableComponent implements OnInit {
   public creditor: string = '';
   public amountToGive: number = 0;
   public fileLoaded: boolean = true;
-  public showDetailsStatus: boolean = false;
+  public showDetailsStatus: boolean = true;
+
 
   ngOnInit(): void {
 
@@ -28,7 +30,7 @@ export class DepensesTableComponent implements OnInit {
       depenseObj.setDate(date0bj);
       depenseObj.setCategory(depense['category']);
       depenseObj.setRate(depense['rate']);
-      depenseObj.setSpent(depense['spent']);
+      depenseObj.setSpent(depense['amount']);
       return depenseObj;
     });
 
@@ -61,12 +63,14 @@ export class DepensesTableComponent implements OnInit {
 
   }
 
-  public constructor(private csvService: CsvImportService) { };
+  public constructor(private csvService: CsvImportService,
+    private router: Router) { };
 
   // basic change boolean state to display expenses details
   
   public showDetails(): void {
     this.showDetailsStatus = !this.showDetailsStatus;
+
   }
 
 
