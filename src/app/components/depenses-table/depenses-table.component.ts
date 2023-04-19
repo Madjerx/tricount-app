@@ -16,7 +16,7 @@ export class DepensesTableComponent implements OnInit {
   public creditor: string = '';
   public amountToGive: number = 0;
   public fileLoaded: boolean = true;
-  public showDetailsStatus: boolean = true;
+  public showDetailsStatus: boolean = false;
 
 
   ngOnInit(): void {
