@@ -1,8 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Route, Router } from '@angular/router';
-import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { Depense } from 'src/app/models/depense';
+import { faRotateRight } from '@fortawesome/free-solid-svg-icons'
 import { CsvImportService } from 'src/app/services/csv-import.service';
 
 @Component({
@@ -14,10 +14,8 @@ export class ImportCsvComponent implements OnInit {
 
   public fileLoaded: boolean = false;
   public onLoad: boolean = false;
-  public faCheck = faCheck;
-  public faXmark = faXmark;
   public ngSwitch: string = '';
-
+  public faRotateBack = faRotateRight;
 
   public constructor(private csvService: CsvImportService,
     private router: Router) { }
@@ -40,7 +38,8 @@ export class ImportCsvComponent implements OnInit {
 
     reader.onload = () => {
       const csvData = reader.result as string;
-
+      console.log('csvData ', csvData);
+      
       // Parse the CSV data 
       const rows = csvData.split('\r\n');
 
@@ -51,6 +50,8 @@ export class ImportCsvComponent implements OnInit {
 
       // transform data in a array of objects with csv headers as properties and row as values
       const headers = rows[0].split(';');
+      console.log('headers ', headers);
+
       const values = rows.slice(1).map(
         row => row.split(';'));
       const objects = values.map(value => {
@@ -62,6 +63,8 @@ export class ImportCsvComponent implements OnInit {
         })
         return obj;
       })
+      console.log('objects ', objects);
+      
 
 
       // Convert objects from csv into an array of my Depense Class
@@ -75,7 +78,7 @@ export class ImportCsvComponent implements OnInit {
         depenseObj.setSpent(depense['spent']);
         return depenseObj;
       })
-      console.log(depenses);
+      console.log('depenses ', depenses);
       
       this.csvService.setDepensesToLocalStorage(depenses);
 
