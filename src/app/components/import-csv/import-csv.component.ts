@@ -41,7 +41,7 @@ export class ImportCsvComponent implements OnInit {
       console.log('csvData ', csvData);
       
       // Parse the CSV data 
-      const rows = csvData.split('\r\n');
+      const rows = csvData.split(/\r?\n/);
 
       // Remove the last row if it is empty
       if (rows[rows.length - 1] === '') {
