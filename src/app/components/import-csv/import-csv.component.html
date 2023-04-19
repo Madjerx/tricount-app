@@ -2,33 +2,36 @@
 <div class="consigne center-content">
     <p>Chargez le fichier CSV (format UTF-8 avec séparation en ';').</p>
     <p>Consultez la page d'<a href="/help">aide</a> pour être guidé.</p>
-    <a *ngIf="!fileLoaded" href="/assets/example.csv" download="example.csv" target="_self" class="italic">Télécharger CSV d'exemple</a>
+    <a *ngIf="!fileLoaded" href="/assets/example.csv" download="example.csv" target="_self" class="italic">Télécharger
+        CSV d'exemple</a>
 </div>
-<!-- upload section -->
-<div *ngIf="!fileLoaded && !onLoad" class="button-wrapper">
-    <span class="label">
-        Upload CSV
-    </span>
 
-    <input type="file" name="upload" id="upload" class="upload-box" placeholder="Upload File"
-        (change)="onFileSelected($event)">
-
-</div>
-<!-- loader icon -->
-<div *ngIf="onLoad" class="center-content">
-    <div class="lds-roller">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+<!-- ngswitch cases -->
+<div [ngSwitch]="ngSwitch">
+    <!-- upload section -->
+    <div *ngSwitchDefault class="button-wrapper">
+        <span class="label">
+            Upload CSV
+        </span>
+        <input type="file" name="upload" id="upload" class="upload-box" placeholder="Upload File"
+            (change)="onFileSelected($event)">
     </div>
-</div>
-<!-- confirm loaded file section + result -->
-<div *ngIf="fileLoaded && !onLoad" class="center-content">
-    <p class="green">Fichier chargé <fa-icon (click)="reload()" style="color:red" [icon]="faXmark"></fa-icon></p>
-    <app-depenses-table></app-depenses-table>
+    <!-- loader icon -->
+    <div *ngSwitchCase="'loading'" class="center-content">
+        <div class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- confirm loaded file section + result -->
+    <div *ngSwitchCase="'loaded'" class="center-content">
+        <p class="green">Fichier chargé <fa-icon (click)="reload()" style="color:red" [icon]="faXmark"></fa-icon></p>
+        <app-depenses-table></app-depenses-table>
+    </div>
 </div>

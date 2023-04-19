@@ -11,11 +11,12 @@ import { CsvImportService } from 'src/app/services/csv-import.service';
   styleUrls: ['./import-csv.component.scss']
 })
 export class ImportCsvComponent implements OnInit {
-  
+
   public fileLoaded: boolean = false;
   public onLoad: boolean = false;
   public faCheck = faCheck;
   public faXmark = faXmark;
+  public ngSwitch: string = '';
 
 
   public constructor(private csvService: CsvImportService,
@@ -25,11 +26,10 @@ export class ImportCsvComponent implements OnInit {
   ngOnInit(): void {
     // check if expenses array stored localy
 
-    if(this.csvService.getDepensesFromLocalStorage().length > 0) {
+    if (this.csvService.getDepensesFromLocalStorage().length > 0) {
       this.fileLoaded = true;
     }
 
-    ;
   }
 
   // method to get data from CSV into a Depense array 
@@ -81,22 +81,21 @@ export class ImportCsvComponent implements OnInit {
 
     reader.readAsText(file);
 
-    this.onLoad = true;
+    this.ngSwitch = 'loading';
     setTimeout(() => {
-      this.fileLoaded = true;
-      this.onLoad = false;
+      this.ngSwitch = 'loaded';
     },
-      500);
+      700);
   }
 
-  public reload():void {
+  public reload(): void {
     this.csvService.clearLocalStorage();
-    this.onLoad = true;
+    this.ngSwitch = 'loading';
     setTimeout(() => {
-      this.fileLoaded = false;
-      this.onLoad = false;
+      this.ngSwitch = '';
+
     },
-      500);
+      700);
     // window.location.reload();
 
   }
