@@ -12,6 +12,18 @@ body {
     background: #CCD1D9;
 }
 
+.consigne {
+  margin: 20px;
+}
+
+i {
+  margin-left: 5px;
+  transition: transform .5s ease-in-out;
+
+  &:hover{
+    transform: rotate(360deg);
+  }
+}
 a.italic {
   font-style: italic;
 }

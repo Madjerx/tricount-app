@@ -31,7 +31,7 @@
     </div>
     <!-- confirm loaded file section + result -->
     <div *ngSwitchCase="'loaded'" class="center-content">
-        <p class="green">Fichier chargé <fa-icon (click)="reload()" style="color:red" [icon]="faXmark"></fa-icon></p>
+        <p class="green">Fichier chargé<i (click)="reload()" class="fas fa-rotate-right"></i></p>
         <app-depenses-table></app-depenses-table>
     </div>
 </div>

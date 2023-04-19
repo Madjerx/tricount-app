@@ -2,7 +2,7 @@
 <div *ngIf="fileLoaded" class="result">
     <p>{{indebted | titlecase}} doit {{amountToGive}} € à {{creditor | titlecase}}.</p>
 </div>
-<div class="expenses-list center-content">
+<div class="center-content">
     <div *ngIf="fileLoaded">
         <button class="detail-button" type="button" (click)="showDetails()">Afficher détails    </button>
     </div>

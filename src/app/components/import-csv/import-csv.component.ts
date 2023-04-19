@@ -27,7 +27,7 @@ export class ImportCsvComponent implements OnInit {
     // check if expenses array stored localy
 
     if (this.csvService.getDepensesFromLocalStorage().length > 0) {
-      this.fileLoaded = true;
+      this.ngSwitch = 'loaded';
     }
 
   }
@@ -75,6 +75,8 @@ export class ImportCsvComponent implements OnInit {
         depenseObj.setSpent(depense['spent']);
         return depenseObj;
       })
+      console.log(depenses);
+      
       this.csvService.setDepensesToLocalStorage(depenses);
 
     }
