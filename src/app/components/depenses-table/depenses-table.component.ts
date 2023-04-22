@@ -1,3 +1,4 @@
+import { DecimalPipe } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
@@ -67,7 +68,7 @@ export class DepensesTableComponent implements OnInit {
     private router: Router) { };
 
   // basic change boolean state to display expenses details
-  
+
   public showDetails(): void {
     this.showDetailsStatus = !this.showDetailsStatus;
 

@@ -1,6 +1,6 @@
 <!-- Résultat après le tri -->
 <div *ngIf="fileLoaded" class="result">
-    <p>{{indebted | titlecase}} doit {{amountToGive}} € à {{creditor | titlecase}}.</p>
+    <p>{{indebted | titlecase}} doit {{amountToGive | number : '1.2-2'}} € à {{creditor | titlecase}}.</p>
 </div>
 <div class="center-content">
     <div *ngIf="fileLoaded">
