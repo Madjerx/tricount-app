@@ -1,0 +1,37 @@
+<!-- Résultat après le tri -->
+<div *ngIf="fileLoaded" class="result">
+    <p>{{indebted | titlecase}} doit {{amountToGive | number : '1.2-2'}} € à {{creditor | titlecase}}.</p>
+</div>
+<div class="center-content">
+    <div *ngIf="fileLoaded">
+        <button class="detail-button" type="button" (click)="showDetails()">Afficher détails    </button>
+    </div>
+</div>
+
+<!-- table with expenses + expenses per author -->
+
+<div *ngIf="showDetailsStatus" class="center-content">
+    <p *ngFor="let author of mappedDepenses | keyvalue">{{author.key | titlecase}} a dépensé {{author.value}}€.</p>
+    <table class="expenses-list">
+        <thead>
+            <tr>
+                <td>Auteur</td>
+                <td>Date</td>
+                <td>Catégorie</td>
+                <td>Rate</td>
+                <td>Dépense</td>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let depense of depenses">
+                <tr>
+                    <td>{{depense.getName() | titlecase}}</td>
+                    <td>{{depense.getDate() | date: 'dd/MM'}}</td>
+                    <td>{{depense.getCategory() | titlecase}}</td>
+                    <td>{{depense.getRate()}}</td>
+                    <td>{{depense.getSpent()}}</td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</div>

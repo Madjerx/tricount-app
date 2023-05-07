@@ -1,1 +1,44 @@
-<input type="file" (change)="onFileSelected($event)">
+<!-- step section -->
+<div class="consigne center-content">
+    <p>Chargez le fichier CSV et obtenez le résultat du tri.</p>
+    <p>Ouvrez la section d'<a (click)="changeHelpStatus()">aide</a> pour être guidé.</p>
+</div>
+<div *ngIf="helpStatus" class="center-content help-section">
+    <p>Cette application a un unique but : traiter un fichier .csv qui répertorie une grande liste de dépenses de couple. Qui a payé quoi ? Et qui doit des sous à qui ?</p>
+    <p>Le fichier csv doit présenter 5 colonnes (name, date, category, rate et amount)</p>
+    <p>De plus, il doit être exporté au format UTF-8 avec séparation en ';' .</p>
+    <p>Pour tester l'application, vous pouvez télécharger le fichier .csv ci-dessous et l'upload pour afficher le résultat.</p>
+    <a *ngIf="!fileLoaded" href="assets/example.csv" download="example.csv" target="_self" class="italic">Télécharger
+        le fichier d'exemple</a>
+    <a (click)="changeHelpStatus()" class="reduce-link">Réduire</a>
+</div>
+
+<!-- ngswitch cases -->
+<div [ngSwitch]="ngSwitch">
+    <!-- upload section -->
+    <div *ngSwitchDefault class="button-wrapper">
+        <span class="label">
+            Upload CSV
+        </span>
+        <input type="file" name="upload" id="upload" class="upload-box" placeholder="Upload File"
+            (change)="onFileSelected($event)">
+    </div>
+    <!-- loader icon -->
+    <div *ngSwitchCase="'loading'" class="center-content">
+        <div class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- confirm loaded file section + result -->
+    <div *ngSwitchCase="'loaded'" class="center-content margin-bot">
+        <p class="green">Fichier chargé<fa-icon (click)="reload()" [icon]=faRotateBack></fa-icon></p>
+        <app-depenses-table></app-depenses-table>
+    </div>
+</div>
